@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import './Files.css';
+import '../App.css';
+import test from '../test.png';
 
 export default function About(){
   return(
-    <div>
-      <h1>this is the About Page</h1>
+    <div className="App">
+       <header className="App-header">
+      <img src={test} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        </header>
     </div>
   )
 }
