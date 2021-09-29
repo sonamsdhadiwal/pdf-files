@@ -293,11 +293,6 @@ p:last-child {
     align-items: center;
     justify-content: flex-end;
     padding-top: 0;
-    /* background-color:green;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center; */
 }
 
 .header, .social {
