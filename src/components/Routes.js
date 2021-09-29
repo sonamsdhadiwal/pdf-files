@@ -14,7 +14,7 @@ const Routes = () => {
       <Route path='/contact' component = { Contact }/>
       <Route path='/dragdropfiles' component = { Filesdragdrop } />
       <Route path='/merge-pdf' component = {Filesdragdrop} />
-      <Route path='/' />
+      <Route path='/' component={ Projects } />
     </Switch>
 
   )
