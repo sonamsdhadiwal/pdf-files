@@ -1,5 +1,4 @@
 import React from 'react';
-import './Files.css';
 import '../App.css';
 import tests from '../tests.png';
 import Navbar from './Navbar';
@@ -9,8 +8,544 @@ import split from './split.jpg';
 import Filesdragdrop from './Filesdragdrop';
 import compress from './compress.png';
 import pdfWord from './pdfWord.png';
+import { makeStyles } from "@material-ui/core/styles";
+import { green } from '@material-ui/core/colors';
+
+const useStyles = makeStyles((theme) => ({
+  h1: {
+    backgroundColor:"skyblue",
+    letterSpacing: .3,
+    lineHeight: 2,
+  },
+
+  
+ul: {
+  listStyle: "none",
+},
+
+container: {
+  display: "block",
+},
+
+
+header: {
+  position: "fixed",
+  background: 'white',
+  width: 1350,
+  zIndex: 1041,
+  left: 0,
+  top: 0,
+
+  height: 60,
+  display: "inline-block", 
+  [theme.breakpoints.up("md")]: {
+    display: "block !important",
+        height: 60,
+        flex: "0 1 130",
+        marginRight: 4,
+        order: -1,
+        justifyContent: "flex-start",
+        marginLeft: 24,
+        order: 5,
+        flex: "0 0 auto",
+        width: 10000
+  },
+},
+
+mainMenu :{
+  WebkitTextSizeAdjust: 100,
+    WebkitFontSmoothing: "antialiased",
+    letterSpacing: .3,
+    direction: "ltr",
+    fontFeatureSettings: "lnum",
+    color: "#161616",
+    boxSizing: "inherit",
+    padding: 0,
+    border: 0,
+    font: "inherit",
+    verticalAlign: "baseline",
+    height: 60,
+    fontSize: 11,
+    margin: 0,
+    background: "#fff",
+    borderTop: 0,
+    [theme.breakpoints.up("md")]: {
+      background: "fff",
+      borderTop: 0,
+      height: 60
+    },
+   nav : {
+     li : {
+        a: {
+
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  listStyle: "none",
+  boxSizing: "inherit",
+  margin: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  background: "black",
+  borderTop: "1 solid black",
+  display: "flex",
+  alignItems: "center",
+  lineHeight: 60,
+  height: 61,
+  textDecoration: "none",
+  textTransform: "uppercase",
+  marginTop: -1,
+  color: "#161616",
+  cursor: "pointer",
+  padding: "0 12",
+}
+     }
+   }
+},
+
+
+tools: {
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  color: "#161616",
+  boxSizing: "inherit",
+  margin: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  position: "relative",
+  flexWrap: "wrap",
+},
+
+tools__container: {
+  WebkitTextSizeAdjust: 100,
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  color: "#161616",
+  boxSizing: "inherit",
+  margin: 0,
+  padding: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  background: "#fff",
+  borderLeft: "1 solid #f6f6f8",
+  borderTop: "1 solid #f6f6f8",
+  display: "flex",
+  flexWrap: "wrap",
+  position: "relative",
+  boxShadow: "0 2 10 0 black",
+  marginTop: -80,
+},
+
+tools__item: {
+  color: "383e45",
+  borderRight: "1 solid black",
+  borderBottom: "1 solid black",
+  position: "relative",
+  overflow: "hidden",
+  zIndex: 1,
+  transitionProperty: "all",
+  transitionDuration: "0.4s",
+  transitionTimingFunction: "ease-out",
+  transitionDelay: 0,
+},
+
+tools__label: {
+  paddingLeft: 20,
+  paddingTop: 10,
+},
+
+tools__item__icon: {
+  WebkitTextSizeAdjust: 100,
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  color: "#383e45",
+  boxSizing: "inherit",
+  margin: 0,
+  padding: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  marginBottom: 12,
+},
+
+h3: {
+  WebkitFontSmoothing: "antialiased",
+  direction: "ltr",
+  fontFeatureSettings: "lnum" ,
+  boxSizing: "inherit",
+  padding: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  fontSize: 20,
+  fontWeight: 600,
+  lineHeight: 1,
+  letterSpacing: 0,
+  color: "#383e45",
+  marginBottom: 9,
+  marrginRight: 9,
+  paddingLeft: 30,
+},
+
+a: {
+  textDecoration: "none",
+},
+
+tools__item__content: {
+  WebkitTextSizeAdjust: 100,
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  boxSizing: "inherit",
+  margin: 0,
+  paddingLeft: 30,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  fontSize: 12,
+  lineHeight: 1,
+  color: "#626870",
+},
+
+header__main: {
+  WebkitTextSizeAdjust: 1000,
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  color: "#161616",
+  boxSizing: "inherit",
+  margin: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  background: "#fff",
+  padding: 0,
+  display: "flex",
+  flexWrap: "wrap",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  paddingTop: 0,
+  [theme.breakpoints.up("md")]: {
+    justifyContent: "flex-start",
+        paddingTop: 0,
+  },
+},
+
+social: {
+  paddingLeft: 24,
+  flex: "0 0 33",
+  height: 60,
+  WebkitTextSizeAdjust: 100,
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  color: "#161616",
+  boxSizing: "inherit",
+  margin: 0,
+  padding: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  flex: "0 0 33",
+  height: 60,
+  paddingLeft: 24,
+  display: "none",
+},
+
+social__item: {
+  WebkitTextSizeAdjust: 10000,
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  boxSizing: "inherit",
+  margin: 0,
+  padding: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  background: "black",
+  color: "#e5322d",
+  textDecoration: "none",
+  width: 24,
+  height: 24,
+  backgroundSize: "24 24",
+  borderRadius: 100,
+  transition: "all .3s easeIn-out",
+  opacity: .7,
+  display: "inlineBlock",
+  marginRight: 4,
+  backgroundPosition: "0 0",
+  backgroundRepeat: "noRepeat",
+  backgroundColor: "black",
+},
+
+
+brand: {
+   lineHeight: 20,
+   display: "flex",
+   alignItems: "center",
+   color: "green",
+   height: 60,
+   WebkitTextSizeAdjust: 1000,
+   WebkitFontSmoothing: "antialiased",
+   letterSpacing: .3,
+   direction: "ltr",
+   fontFeatureSettings: "lnum",
+   color: "#161616",
+   boxSizing: "inherit",
+   margin: 0,
+   padding: 0,
+   border: 0,
+   font: "inherit",
+   verticalAlign: "baseline",
+   lineHeight: 20,
+   display: "flex",
+   alignItems: "center",
+   height: 60,
+   flex: "0 1 130",
+   marginRight: 4,
+   order: -1,
+   justifyContent: "flexStart",
+   marginLeft: 24,
+   [theme.breakpoints.up("md")]: {
+    flex: "0 1 130",
+        marginRight: 4,
+        order: -1,
+        justifyContent: "flex-start",
+        marginLeft: 24,
+  },
+},
+
+row1: {
+  display: "flex",
+  flexWrap: "wrap",
+  marginRight: -16,
+  marginLeft: -16,
+},
+
+brand__logo: {
+  WebkitTextSizeAdjust: 100,
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  color: "#161616",
+  boxSizing: "inherit",
+  margin: 0,
+  padding: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  maxHeight: 100,
+  width: 120,
+},
+
+header__nav: {
+  padding: 0,
+  margin: 0,
+  WebkitTextSizeAdjust: 100,
+    WebkitFontSmoothing: "antialiased",
+    letterSpacing: .3,
+    direction: "ltr",
+    fontFeatureSettings: "lnum",
+    color: "#161616",
+    boxSizing: "inherit",
+    border: 0,
+    font: "inherit",
+    verticalAlign: "baseline",
+    padding: 0,
+    margin: "0 auto",
+    flex: "1 1 0",
+    margin: 0,
+    padding: 0,
+    border: 0,
+    listStyle: "none",
+    justifyContent: "flexStart",
+    width: "auto",
+    textAlign: "left",
+    display: "inlineFlex",
+},
+
+home: {
+  WebkitTextSizeAdjust: "100",
+  boxSizing: "inherit",
+  padding: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  margin: 0,
+  fontFamily: "rawline,Open Sans,Arial,sansSerif",
+  WebkitFontSmoothing: "antialiased",
+  fontSize: 15,
+  lineHeight: 20,
+  letterSpacing: .3,
+  direction: "ltr",
+  fontVariantNumeric: "lining-nums",
+  fontFeatureSettings: "lnum",
+  background: "#f3f0ec",
+  color: "#161616",
+},
+
+main: {
+  WebkitTextSizeAdjust: 100,
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  color: "#161616",
+  boxSizing: "inherit",
+  margin: 0,
+  padding: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  marginTop: 60,
+  overflow: "hidden",
+},
+
+homeTitle: {
+  WebkitTextSizeAdjust: 100,
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  color: "#161616",
+  boxSizing: "inherit",
+  margin: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  position: "relative",
+  textAlign: "center",
+  padding: 24,
+  paddingBottom: 100,
+},
+
+
+
+topMenu: {
+  display: "flex",
+  justifyContent: "flex-end",
+  WebkitTextSizeAdjust: 100,
+    WebkitFontSmoothing: "antialiased",
+    letterSpacing: .3,
+    direction: "ltr",
+    fontFeatureSettings: "lnum",
+    color: "#161616",
+    boxSizing: "inherit",
+    margin: 0,
+    padding: 0,
+    border: 0,
+    font: "inherit",
+    verticalAlign: "baseline",
+    justifyContent: "flex-end",
+    display: "flex",
+    height: 60,
+    order: 5,
+    flex: "0 0 auto",
+    [theme.breakpoints.up("md")]: {
+      order: 5,
+        flex: "0 0 auto"
+    },
+    nav__item: {
+      WebkitTextSizeAdjust: 100,
+      WebkitFontSmoothing: "antialiased",
+      letterSpacing: .3,
+      direction: "ltr",
+      fontFeatureSettings: "lnum",
+      color: "#161616",
+      listStyle: "none",
+      boxSizing: "inherit",
+      padding: 0,
+      border: 0,
+      font: "inherit",
+      verticalAlign: "baseline",
+      margin: 0,
+      height: 100,
+  }
+},
+
+navbar__head: {
+  float: "right",
+},
+
+desktop: {
+  margin: 0,
+  padding: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+},
+footer: {
+  color:"red",
+  backgroundColor: "f6f6f8",
+  paddingTop: 32,
+  paddingBottom: 24,
+  borderTop: "8 solid #fff",
+},
+
+footerMain: {
+  textTransform: "uppercase",
+  marginBottom: 18,
+},
+
+
+footer__nav: {
+  li: {
+  fontSize: 15,
+},
+
+head__nav: {
+  WebkitTextSizeAdjust: 100,
+  WebkitFontSmoothing: "antialiased",
+  letterSpacing: .3,
+  direction: "ltr",
+  fontFeatureSettings: "lnum",
+  color: "#161616",
+  boxSizing: "inherit",
+  margin: 0,
+  padding: 0,
+  border: 0,
+  font: "inherit",
+  verticalAlign: "baseline",
+  listStyle: "none",
+  justifyContent: "flexStart",
+  width: "auto",
+  textAlign: "left",
+  display: "inlineFlex",
+},
+
+
+title4: {
+  textTransform: "uppercase",
+  marginBottom: 18,
+},
+
+}
+
+
+
+}))
 
 export default function Projects() {
+  const classes = useStyles();
   return (
     <div>
 
@@ -23,29 +558,29 @@ export default function Projects() {
         </header>
     </div> */}
       {/* Header */}
-      <div className="header">
-        <div className="header__main col-md-12">
+      <div className={classes.header}>
+        <div className={classes.header__main} class="col-md-12">
 
-          <div class="social">
-            <a class="social__item social__item--twitter" href="https://twitter.com/ilovepdf_com" rel="noopener" target="_blank" title="Follow us on Twitter!"></a>
-            <a class="social__item social__item--facebook" href="https://www.facebook.com/ilovepdfcom-238648522858564/" rel="noopener" target="_blank" title="Like us on Facebook!"></a>
+          <div className={classes.social}>
+            <a className={classes.social__item} href="https://twitter.com/ilovepdf_com" rel="noopener" target="_blank" title="Follow us on Twitter!"></a>
+            <a className={classes.social__item} href="https://www.facebook.com/ilovepdfcom-238648522858564/" rel="noopener" target="_blank" title="Like us on Facebook!"></a>
           </div>
 
-          <div class="brand">
-            <div class="brand__logo">
-              <a href="/" title="FileTwistter">
+          <div className={classes.brand}>
+            <div className={classes.brand__logo}>
+              <a className={classes.a} href="/" title="FileTwistter">
                 <img src={tests} alt="filetwistter" />
               </a>
             </div>
           </div>
 
-          <div className="header__nav">
+          <div className={classes.header__nav}>
             <Navbar />
           </div>
 
 
           {/* <div class="header__nav">
-                <div class="main-menu" id="menuBig">
+                <div className={classes.mainMenu} id="menuBig">
         <ul class="head__nav">
             <li><a href="/merge_pdf">Merge PDF</a></li>
             <li><a href="/split_pdf">Split PDF</a></li>
@@ -149,81 +684,79 @@ export default function Projects() {
               </a>
             </div> */}
           {/* </div> */}
-          <div className="header__nav"></div>
-          <div className="desktop tooltip tooltip--bottom" title="filetwistter Desktop, work-offline"></div>
-          <div className="top-menu">
+          <div className={classes.header__nav}></div>
+          <div className={classes.desktop} title="filetwistter Desktop, work-offline"></div>
+          <div className={classes.topMenu}>
 
-            <ul className="nav">
-              <li class="nav__item nav__item--gray">
-                <a href="/login"><span>Log in</span></a>
+            <ul className={classes.nav}>
+              <li className={classes.nav__item}>
+                <a className={classes.a} href="/login"><span>Log in</span></a>
               </li>
-              <li class="nav__item nav__item--red">
-                <a href="/register">
+              <li className={classes.nav__item}>
+                <a className={classes.a} href="/register">
                   <i class="ico ico--user"></i>
                   <span>Sign up</span></a>
               </li>
-
             </ul>
-
           </div>
         </div>
       </div>
 
-      <div className="main">
-        <div class="home-title">
-          <h1 class="title">Free Solution to all your file converting problems.Everything you need for different conversions is at one place.</h1>
-          <h2 class="subtitle">Everything is 100% FREE and easy to use online! Merge, split, compress, convert, rotate, unlock and watermark PDFs with just a few clicks.</h2>
+      <div className={classes.main}>
+        <div className={classes.homeTitle}>
+          <h1 className={classes.h1}>Free Solution to all your file converting problems.Everything you need for different conversions is at one place.</h1>
+          <h2 className={classes.subTitle}>Everything is 100% FREE and easy to use online! Merge, split, compress, convert, rotate, unlock and watermark PDFs with just a few clicks.</h2>
         </div>
 
-        <div className="tools">
-          <div class="row">
+        <div className={classes.tools}>
+          <div className={classes.row1} >
             <div class="col-md-3">
-              <a href="/merge-pdf" title="Merge Pdf" component={Filesdragdrop}>
-                <div className="tools__label">
+              <a className={classes.a} href="/merge-pdf" title="Merge Pdf" component={Filesdragdrop}>
+                <div className={classes.tools__label}>
                   <img src={merge} title="Merge Pdf Files" />
                 </div>
-                <h3>Merge Pdf </h3>
-                <div class="tools__item__content">
+                <h3 className={classes.h3}>Merge Pdf </h3>
+                <div className={classes.tools__item__content}>
                   <p>Combine PDFs in the order you want with the easiest PDF merger available.</p>
                 </div>
                 {/* <img src={tests} /> */}
               </a>
             </div>
             <div class="col-md-3">
-              <a href="/split_pdf" title="Split PDF">
-                <div className="tools__label">
+              <a className={classes.a} href="/split_pdf" title="Split PDF">
+                <div className={classes.tools__label}>
 
                 <img src={split} title="Split Pdf Files" />
                 </div>
-                <h3>Split PDF</h3>
-                <div class="tools__item__content">
+                <h3 className={classes.h3}>Split PDF</h3>
+                <div className={classes.tools__item__content}>
                   <p>Separate one page or a whole set for easy conversion into independent PDF files.</p>
                 </div>
               </a></div>
             <div class="col-md-3">
-              <a href="/compress_pdf" title="Compress PDF">
-                <div className="tools__label">
+              <a className={classes.a} href="/compress_pdf" title="Compress PDF">
+                <div className={classes.tools__label}>
                 <img src={compress} title="Compress Pdf Files" />
                 </div>
-                <h3>Compress PDF</h3>
-                <div class="tools__item__content">
+                <h3 className={classes.h3}>Compress PDF</h3>
+                <div className={classes.tools__item__content}>
                   <p>Reduce file size while optimizing for maximal PDF quality.</p>
                 </div>
               </a>
             </div>
             <div class="col-md-3">
-              <a href="/pdf_to_word" title="PDF to Word">
-                <div className="tools__label">
+              <a className={classes.a} href="/pdf_to_word" title="PDF to Word">
+                <div className={classes.tools__label}>
                 <img src={pdfWord} title="Convert Pdf to Word Files" />
                 </div>
-                <h3>PDF to Word</h3>
-                <div class="tools__item__content">
+                <h3 className={classes.h3}>PDF to Word</h3>
+                <div className={classes.tools__item__content}>
                   <p>Easily convert your PDF files into easy to edit DOC and DOCX documents. The converted WORD document is almost 100% accurate.</p>
                 </div>
               </a>
             </div>
           </div>
-          <div class="row">
+          <div className={classes.row1}>
             {/* Pdf to Powerpoint */}
             {/* <div class="col-md-3">
               <a href="/pdf_to_powerpoint" title="PDF to Powerpoint">
@@ -231,7 +764,7 @@ export default function Projects() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M32.324 15.656h-9.55c-2.477 0-3.375.258-4.28.742a5.06 5.06 0 0 0-2.098 2.102c-.484.902-.742 1.8-.742 4.277v9.55H5.18c-1.8 0-2.453-.187-3.113-.54a3.69 3.69 0 0 1-1.527-1.527C.188 29.598 0 28.945 0 27.145V5.18c0-1.8.188-2.453.54-3.113A3.69 3.69 0 0 1 2.066.539C2.727.188 3.38 0 5.18 0h21.965c1.8 0 2.453.188 3.113.54a3.69 3.69 0 0 1 1.527 1.527c.352.66.54 1.313.54 3.113zm0 0" fill-rule="evenodd" fill="rgb(95.294118%,85.098039%,80%)"></path><path d="M14.477 7.52c0-.477-.395-.863-.883-.863s-.883.387-.883.863v3.844L7.566 6.316a.89.89 0 0 0-1.246 0c-.168.16-.258.38-.258.61s.1.453.258.613l5.145 5.05H7.55c-.488 0-.883.387-.883.867s.395.863.883.863h6.047a.85.85 0 0 0 .34-.066c.215-.086.387-.254.477-.47.05-.102.066-.215.066-.328l.004-5.934zm0 0" fill="rgb(81.568627%,27.058824%,14.901961%)"></path><g fill-rule="evenodd"><path d="M22.855 17.676H44.82c1.8 0 2.453.188 3.113.543.648.344 1.184.875 1.527 1.527.352.656.54 1.31.54 3.11V44.82c0 1.8-.187 2.453-.54 3.113a3.69 3.69 0 0 1-1.527 1.527c-.66.352-1.312.54-3.113.54H22.855c-1.8 0-2.453-.187-3.113-.54-.648-.344-1.18-.88-1.527-1.527-.352-.66-.54-1.312-.54-3.113V22.855c0-1.8.188-2.453.54-3.113.348-.648.88-1.18 1.527-1.527.66-.352 1.313-.54 3.113-.54zm0 0" fill="rgb(100%,46.27451%,31.764706%)"></path><path d="M38.367 34.648C37.28 35.55 35.828 36 34.008 36H32.39v5H29V26.5h5.313c3.79 0 5.688 1.54 5.688 4.62 0 1.453-.543 2.633-1.633 3.535zM33.82 29H32.5v4.5h1.32c1.785 0 2.68-.758 2.68-2.273 0-1.484-.89-2.227-2.68-2.227zm0 0" fill="rgb(100%,100%,100%)"></path></g></svg>
                 </div>
                 <h3>PDF to Powerpoint</h3>
-                <div class="tools__item__content">
+                <div className={classes.tools__item__content}>
                   <p>Turn your PDF files into easy to edit PPT and PPTX slideshows.</p>
                 </div>
               </a>
@@ -244,7 +777,7 @@ export default function Projects() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M32.324 15.656h-9.55c-2.477 0-3.375.258-4.28.742a5.06 5.06 0 0 0-2.098 2.102c-.484.902-.742 1.8-.742 4.277v9.55H5.18c-1.8 0-2.453-.187-3.113-.54a3.69 3.69 0 0 1-1.527-1.527C.188 29.598 0 28.945 0 27.145V5.18c0-1.8.188-2.453.54-3.113A3.69 3.69 0 0 1 2.066.539C2.727.188 3.38 0 5.18 0h21.965c1.8 0 2.453.188 3.113.54a3.69 3.69 0 0 1 1.527 1.527c.352.66.54 1.313.54 3.113zm0 0" fill-rule="evenodd" fill="rgb(76.078431%,89.803922%,76.470588%)"></path><path d="M14.477 7.52c0-.477-.395-.863-.883-.863s-.883.387-.883.863v3.844L7.566 6.316a.89.89 0 0 0-1.246 0c-.168.16-.258.38-.258.61s.1.453.258.613l5.145 5.05H7.55c-.488 0-.883.387-.883.867s.395.863.883.863h6.047a.85.85 0 0 0 .34-.066c.215-.086.387-.254.477-.47.05-.102.066-.215.066-.328l.004-5.934zm0 0" fill="rgb(18.039216%,44.705882%,21.568627%)"></path><g fill-rule="evenodd"><path d="M22.855 17.676H44.82c1.8 0 2.453.188 3.113.543.648.344 1.184.875 1.527 1.527.352.656.54 1.31.54 3.11V44.82c0 1.8-.187 2.453-.54 3.113a3.69 3.69 0 0 1-1.527 1.527c-.66.352-1.312.54-3.113.54H22.855c-1.8 0-2.453-.187-3.113-.54-.648-.344-1.18-.88-1.527-1.527-.352-.66-.54-1.312-.54-3.113V22.855c0-1.8.188-2.453.54-3.113.348-.648.88-1.18 1.527-1.527.66-.352 1.313-.54 3.113-.54zm0 0" fill="rgb(36.862745%,63.137255%,38.431373%)"></path><path d="M36.61 41l-2.508-4.72c-.102-.176-.195-.5-.3-.973h-.04c-.047.223-.16.56-.336 1.012L30.9 41H27l4.64-7.25-4.246-7.25h3.992l2.082 4.348c.164.344.313.754.438 1.227h.04c.082-.285.234-.703.457-1.266l2.316-4.31h3.66l-4.37 7.19L40.5 41zm0 0" fill="rgb(100%,100%,100%)"></path></g></svg>
                 </div>
                 <h3>PDF to Excel</h3>
-                <div class="tools__item__content">
+                <div className={classes.tools__item__content}>
                   <p>Pull data straight from PDFs into Excel spreadsheets in a few short seconds.</p>
                 </div>
               </a>
@@ -257,7 +790,7 @@ export default function Projects() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M17.676 34.344h9.55c2.477 0 3.375-.258 4.28-.742a5.04 5.04 0 0 0 2.098-2.102c.484-.902.742-1.8.742-4.277v-9.547H44.82c1.8 0 2.453.188 3.113.54s1.176.87 1.527 1.527.54 1.31.54 3.113V44.82c0 1.8-.187 2.453-.54 3.113a3.69 3.69 0 0 1-1.527 1.527c-.66.352-1.312.54-3.113.54H22.855c-1.8 0-2.453-.187-3.113-.54s-1.172-.87-1.527-1.527-.54-1.312-.54-3.113zm0 0" fill-rule="evenodd" fill="rgb(37.254902%,51.372549%,77.647059%)"></path><path d="M43.94 37.137c0-.477-.395-.863-.883-.863s-.883.387-.883.863v3.844l-5.145-5.047c-.348-.34-.902-.34-1.25 0a.85.85 0 0 0-.258.609.86.86 0 0 0 .258.613l5.145 5.05h-3.914c-.488 0-.883.387-.883.867s.395.867.883.867h6.05c.113-.004.227-.023.336-.07a.87.87 0 0 0 .477-.465c.05-.105.066-.22.066-.332l.004-5.934zm0 0" fill="rgb(100%,100%,100%)"></path><path d="M27.145 32.324H5.18c-1.8 0-2.453-.187-3.113-.543S.89 30.914.54 30.254 0 28.95 0 27.145V5.18c0-1.8.188-2.453.54-3.113A3.69 3.69 0 0 1 2.066.539C2.727.188 3.38 0 5.18 0h21.965c1.8 0 2.453.188 3.113.54s1.172.87 1.527 1.527.54 1.313.54 3.113v21.965c0 1.8-.187 2.453-.54 3.113s-.87 1.176-1.527 1.527-1.312.54-3.113.54zm0 0" fill-rule="evenodd" fill="rgb(86.27451%,89.803922%,98.039216%)"></path><path d="M20.844 8.61h2.96l-2.94 14.64H17.77l-1.777-9.035-1.824 9.035h-3.203L8.04 8.61h3.164l1.508 9.363 1.938-9.363h3.004l.04.203 1.688 9.1zm0 0" fill="rgb(16.078431%,34.117647%,58.431373%)"></path></svg>
                 </div>
                 <h3>Word to PDF</h3>
-                <div class="tools__item__content">
+                <div className={classes.tools__item__content}>
                   <p>Make DOC and DOCX files easy to read by converting them to PDF.</p>
                 </div>
               </a>
@@ -270,14 +803,14 @@ export default function Projects() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M17.676 34.344h9.55c2.476 0 3.375-.258 4.28-.742a5.04 5.04 0 0 0 2.097-2.102c.495-.902.743-1.8.743-4.277v-9.547H44.82c1.8 0 2.453.187 3.114.54.656.355 1.175.87 1.527 1.527s.54 1.31.54 3.113V44.82c0 1.8-.187 2.453-.54 3.114-.35.656-.87 1.175-1.526 1.527S46.62 50 44.82 50H22.855c-1.8 0-2.453-.187-3.113-.54s-1.172-.87-1.527-1.526-.54-1.312-.54-3.113zm0 0" fill-rule="evenodd" fill="rgb(100%,46.27451%,31.764706%)"></path><path d="M43.94 37.137c0-.477-.393-.864-.88-.864s-.884.387-.884.864v3.843l-5.146-5.046c-.346-.34-.9-.34-1.25 0-.163.16-.257.38-.257.61a.86.86 0 0 0 .258.613l5.145 5.05h-3.914c-.49 0-.882.387-.882.867s.393.867.882.867H43.063c.113-.002.227-.022.335-.07.215-.085.387-.253.477-.464a.75.75 0 0 0 .065-.332l.005-5.934zm0 0" fill="rgb(100%,100%,100%)"></path><g fill-rule="evenodd"><path d="M27.145 32.324H5.18c-1.8 0-2.453-.187-3.113-.543S.89 30.914.54 30.254 0 28.95 0 27.145V5.18c0-1.8.188-2.453.54-3.113A3.69 3.69 0 0 1 2.066.539C2.727.188 3.38 0 5.18 0h21.965c1.8 0 2.453.188 3.113.54s1.172.87 1.527 1.527.54 1.313.54 3.113v21.965c0 1.8-.187 2.453-.54 3.113s-.87 1.176-1.527 1.527-1.312.54-3.113.54zm0 0" fill="rgb(95.294118%,85.098039%,80%)"></path><path d="M19.367 17.156c-1.086.898-2.54 1.348-4.36 1.348H13.39V23.5H10V9h5.313C19.102 9 21 10.54 21 13.62c0 1.453-.543 2.637-1.633 3.535zM14.82 11.5H13.5V16h1.32c1.785 0 2.68-.758 2.68-2.273 0-1.484-.89-2.227-2.68-2.227zm0 0" fill="rgb(81.568627%,27.058824%,14.901961%)"></path></g></svg>
                 </div>
                 <h3>Powerpoint to PDF</h3>
-                <div class="tools__item__content">
+                <div className={classes.tools__item__content}>
                   <p>Make PPT and PPTX slideshows easy to view by converting them to PDF.</p>
                 </div>
               </a>
             </div> */}
 
           </div>
-          <div className="row ">
+          <div className={classes.row1}>
             {/* Excel to Pdf */}
             {/* <div class="col-md-3">
               <a href="/excel_to_pdf" title="Excel to PDF">
@@ -285,7 +818,7 @@ export default function Projects() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M17.676 34.344h9.55c2.477 0 3.375-.258 4.28-.742a5.04 5.04 0 0 0 2.098-2.102c.484-.902.742-1.8.742-4.277v-9.547H44.82c1.8 0 2.453.188 3.113.54s1.176.87 1.527 1.527.54 1.31.54 3.113V44.82c0 1.8-.187 2.453-.54 3.113a3.69 3.69 0 0 1-1.527 1.527c-.66.352-1.312.54-3.113.54H22.855c-1.8 0-2.453-.187-3.113-.54s-1.172-.87-1.527-1.527-.54-1.312-.54-3.113zm0 0" fill-rule="evenodd" fill="rgb(36.862745%,63.137255%,38.431373%)"></path><path d="M43.94 37.137c0-.477-.395-.863-.883-.863s-.883.387-.883.863v3.844l-5.145-5.047c-.348-.34-.902-.34-1.25 0a.85.85 0 0 0-.258.609.86.86 0 0 0 .258.613l5.145 5.05h-3.914c-.488 0-.883.387-.883.867s.395.867.883.867h6.05c.113-.004.227-.023.336-.07a.87.87 0 0 0 .477-.465c.05-.105.066-.22.066-.332l.004-5.934zm0 0" fill="rgb(100%,100%,100%)"></path><g fill-rule="evenodd"><path d="M27.145 32.324H5.18c-1.8 0-2.453-.187-3.113-.543S.89 30.914.54 30.254 0 28.95 0 27.145V5.18c0-1.8.188-2.453.54-3.113A3.69 3.69 0 0 1 2.066.539C2.727.188 3.38 0 5.18 0h21.965c1.8 0 2.453.188 3.113.54s1.172.87 1.527 1.527.54 1.313.54 3.113v21.965c0 1.8-.187 2.453-.54 3.113s-.87 1.176-1.527 1.527-1.312.54-3.113.54zm0 0" fill="rgb(76.078431%,89.803922%,76.470588%)"></path><path d="M19.11 23.5l-2.508-4.72c-.102-.176-.195-.5-.3-.973h-.04c-.047.223-.16.56-.336 1.012L13.4 23.5H9.5l4.64-7.25L9.895 9h3.992l2.082 4.348c.164.344.313.754.438 1.227h.04c.082-.285.234-.703.457-1.266L19.22 9h3.66l-4.37 7.19L23 23.5zm0 0" fill="rgb(18.039216%,44.705882%,21.568627%)"></path></g></svg>
                 </div>
                 <h3>Excel to PDF</h3>
-                <div class="tools__item__content">
+                <div className={classes.tools__item__content}>
                   <p>Make EXCEL spreadsheets easy to read by converting them to PDF.</p>
                 </div>
               </a>
@@ -299,7 +832,7 @@ export default function Projects() {
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="50" height="50" fill="none" fill-rule="evenodd"><path d="M16.024 0h67.95c5.572 0 7.593.58 9.63 1.67s3.636 2.688 4.725 4.725 1.67 4.058 1.67 9.63v67.95c0 5.572-.58 7.593-1.67 9.63s-2.688 3.636-4.725 4.725-4.058 1.67-9.63 1.67h-67.95c-5.572 0-7.593-.58-9.63-1.67S2.76 95.642 1.67 93.605 0 89.548 0 83.976v-67.95c0-5.572.58-7.593 1.67-9.63S4.358 2.76 6.395 1.67 10.452 0 16.024 0z" fill="#ab6993"></path><path d="M57.98 39.967l5.413 4.398a.51.51 0 0 1-.092.847l-6.234 3.142a1.44 1.44 0 0 1-.388.124l-.136.016a1.44 1.44 0 0 1-1.031-.31c-.407-.326-.588-.842-.48-1.336l.037-.134 2.108-6.5a.51.51 0 0 1 .803-.238zm15.55-20.523a4.33 4.33 0 0 1 5.728-.648l.182.136 1.06.88a4.14 4.14 0 0 1 1.486 2.821 4.12 4.12 0 0 1-.82 2.849l-.148.184-14.9 17.566c-.36.425-.995.48-1.423.125l-5.915-4.9c-.432-.358-.5-.998-.133-1.43L73.53 19.444z" fill="#fff"></path><g stroke="#eadae4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.046"><path d="M48.012 62.483h-7.356m7.356-24.49h-7.356"></path><path d="M44.232 39.695l.004 21.566"></path></g><path d="M24 22.985c-.523 0-.954.396-1.01.905l-.006.11v52c0 .523.396.954.905 1.01l.11.006h52c.523 0 .954-.396 1.01-.905l.006-.11V42.302c0-.56-.455-1.015-1.015-1.015-.523 0-.954.396-1.01.905l-.006.11v32.682h-49.97v-49.97h34.7c.523 0 .954-.396 1.01-.905l.006-.11c0-.523-.396-.954-.905-1.01l-.11-.006H24z" fill="#fff" fill-rule="nonzero"></path><g fill="#eadae4"><rect x="18" y="18" width="12" height="12" rx="6"></rect><rect x="18" y="70" width="12" height="12" rx="6"></rect><rect x="70" y="70" width="12" height="12" rx="6"></rect></g></svg>
                 </div>
                 <h3>Edit PDF</h3>
-                <div class="tools__item__content">
+                <div className={classes.tools__item__content}>
                   <p>Add text, images, shapes or freehand annotations to a PDF document. Edit the size, font, and color of the added content.</p>
                 </div>
               </a>
@@ -333,7 +866,7 @@ export default function Projects() {
             </div> */}
 
           </div>
-          <div className="row">
+          <div className={classes.row1}>
             {/* Page Numbers */}
             {/* <div class="col-md-3">
               <a href="/add_pdf_page_number" title="Page numbers">
@@ -387,7 +920,7 @@ export default function Projects() {
             </div> */}
 
           </div>
-          <div className="row">
+          <div className={classes.row1}>
             {/* Unlock Pdf */}
             {/* <div class="col-md-3">
               <a href="/unlock_pdf" title="Unlock PDF">
@@ -441,7 +974,7 @@ export default function Projects() {
               </a>
             </div> */}
           </div>
-          <div className="row">
+          <div className={classes.row1}>
             {/* Repair Pdf */}
             {/* <div class="col-md-3">
               <a href="/repair-pdf" title="Repair PDF">
@@ -473,97 +1006,97 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="footer">File twistter
-        <div class="container">
-          <div class="row ">
+      <div className={classes.footer}>File twistter
+        <div className={classes.container}>
+          <div className={classes.row1}>
             <div class="col-md-3">
-              <div class="title4 red">
+              <div className={classes.title4}>
                 File Twistter
               </div>
-              <ul class="footer__nav">
+              <ul class={classes.footer__nav}>
                 <li>
-                  <a href="/">Home</a>
+                  <a className={classes.a} href="/">Home</a>
                 </li>
                 <li>
-                  <a href="/">Features</a>
+                  <a className={classes.a} href="/">Features</a>
                 </li>
                 <li>
-                  <a href="/">Pricing</a>
+                  <a className={classes.a}  href="/">Pricing</a>
                 </li>
                 <li>
-                  <a href="/">Tools</a>
+                  <a className={classes.a} href="/">Tools</a>
                 </li>
                 <li>
-                  <a href="/">FAQ</a>
+                  <a className={classes.a} href="/">FAQ</a>
                 </li>
               </ul>
             </div>
 
             <div class="col-md-3">
-              <div class="title4 red">
+              <div className={classes.title4}>
                 Products
               </div>
-              <ul class="footer__nav">
+              <ul className={classes.footer__nav}>
                 <li>
-                  <a href="/">File Twistter Desktop</a>
+                  <a className={classes.a} href="/">File Twistter Desktop</a>
                 </li>
                 <li>
-                  <a href="/">File Twistter Mobile</a>
+                  <a className={classes.a} href="/">File Twistter Mobile</a>
                 </li>
                 <li>
-                  <a href="/">Developers</a>
+                  <a className={classes.a} href="/">Developers</a>
                 </li>
                 <li>
-                  <a href="/">WordPress Plugin</a>
+                  <a className={classes.a} href="/">WordPress Plugin</a>
                 </li>
                 <li>
-                  <a href="/">FAQ</a>
+                  <a className={classes.a} href="/">FAQ</a>
                 </li>
               </ul>
             </div>
 
             <div class="col-md-3">
-              <div class="title4 red">
+              <div className={classes.title4}>
                 Solutions
               </div>
-              <ul class="footer__nav">
+              <ul className={classes.footer__nav}>
                 <li>
-                  <a href="/">Business</a>
+                  <a className={classes.a} href="/">Business</a>
                 </li>
                 <li>
-                  <a href="/">Education</a>
+                  <a className={classes.a} href="/">Education</a>
                 </li>
                 <li>
-                  <a href="/"></a>
+                  <a className={classes.a}  href="/"></a>
                 </li>
                 <li>
-                  <a href="/"></a>
+                  <a className={classes.a}  href="/"></a>
                 </li>
                 <li>
-                  <a href="/"></a>
+                  <a className={classes.a} href="/"></a>
                 </li>
               </ul>
             </div>
 
             <div class="col-md-3">
-              <div class="title4 red">
+              <div className={classes.title4}>
                 COMPANY
               </div>
-              <ul class="footer__nav">
+              <ul className={classes.footer__nav}>
                 <li>
-                  <a href="/">Our Story</a>
+                  <a className={classes.a} href="/">Our Story</a>
                 </li>
                 <li>
-                  <a href="/">Blog</a>
+                  <a className={classes.a} href="/">Blog</a>
                 </li>
                 <li>
-                  <a href="/">Press</a>
+                  <a className={classes.a} href="/">Press</a>
                 </li>
                 <li>
-                  <a href="/">Legal & Privacy</a>
+                  <a className={classes.a} href="/">Legal & Privacy</a>
                 </li>
                 <li>
-                  <a href="/">Contact</a>
+                  <a className={classes.a} href="/">Contact</a>
                 </li>
               </ul>
             </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import './Files.css';
 
 export default function Navbar() {
   return (
