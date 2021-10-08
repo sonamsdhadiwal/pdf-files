@@ -1,8 +1,5 @@
 import test from './test.png';
-import './App.css';
 import Routes from './components/Routes';
-import Navbar from './components/Navbar';
-import Projects from './components/Projects';
 
 function App() {
   return (

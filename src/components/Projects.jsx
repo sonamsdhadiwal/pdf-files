@@ -1,13 +1,6 @@
 import React from 'react';
-import '../App.css';
-import tests from '../tests.png';
 import Navbar from './Navbar';
-import Mergepdf from './Mergepdf';
-import merge from '../merge.png';
-import split from './split.jpg';
 import Filesdragdrop from './Filesdragdrop';
-import compress from './compress.png';
-import pdfWord from './pdfWord.png';
 import { makeStyles } from "@material-ui/core/styles";
 import { green } from '@material-ui/core/colors';
 
@@ -569,7 +562,7 @@ export default function Projects() {
           <div className={classes.brand}>
             <div className={classes.brand__logo}>
               <a className={classes.a} href="/" title="FileTwistter">
-                <img src={tests} alt="filetwistter" />
+                <img src='./tests.png' alt="filetwistter" />
               </a>
             </div>
           </div>
@@ -713,7 +706,7 @@ export default function Projects() {
             <div class="col-md-3">
               <a className={classes.a} href="/merge-pdf" title="Merge Pdf" component={Filesdragdrop}>
                 <div className={classes.tools__label}>
-                  <img src={merge} title="Merge Pdf Files" />
+                  <img src="./merge.png" title="Merge Pdf Files" />
                 </div>
                 <h3 className={classes.h3}>Merge Pdf </h3>
                 <div className={classes.tools__item__content}>
@@ -726,7 +719,7 @@ export default function Projects() {
               <a className={classes.a} href="/split_pdf" title="Split PDF">
                 <div className={classes.tools__label}>
 
-                <img src={split} title="Split Pdf Files" />
+                <img src="./split.jpg" title="Split Pdf Files" />
                 </div>
                 <h3 className={classes.h3}>Split PDF</h3>
                 <div className={classes.tools__item__content}>
@@ -736,7 +729,7 @@ export default function Projects() {
             <div class="col-md-3">
               <a className={classes.a} href="/compress_pdf" title="Compress PDF">
                 <div className={classes.tools__label}>
-                <img src={compress} title="Compress Pdf Files" />
+                <img src='./compress.png' title="Compress Pdf Files" />
                 </div>
                 <h3 className={classes.h3}>Compress PDF</h3>
                 <div className={classes.tools__item__content}>
@@ -747,7 +740,7 @@ export default function Projects() {
             <div class="col-md-3">
               <a className={classes.a} href="/pdf_to_word" title="PDF to Word">
                 <div className={classes.tools__label}>
-                <img src={pdfWord} title="Convert Pdf to Word Files" />
+                <img src="./pdfWord.png" title="Convert Pdf to Word Files" />
                 </div>
                 <h3 className={classes.h3}>PDF to Word</h3>
                 <div className={classes.tools__item__content}>

@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router';
 import About from './About'
 import Projects from './Projects'
 import Contact from './Contact'
-import Mergepdf from './Mergepdf';
 import Filesdragdrop from './Filesdragdrop';
 
 const Routes = () => {
