@@ -1,11 +1,253 @@
-import React, { Component } from 'react';
-import './MergeFiles.css';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Files from 'react-files';
+import { makeStyles } from '@material-ui/core';
 
-class Mergepdf extends Component {
-    constructor() {
-		super();
+const useStyles = makeStyles((theme) => ({
+    main: {
+        WebkitTextSizeAdjust: "100",
+        WebkitFontSmoothing: "antialiased",
+        letterSpacing: ".3",
+        direction: "ltr",
+        fontFeatureSettings: "lnum",
+        color: "#161616",
+        boxSizing: "inherit",
+        margin: "0",
+        padding: "0",
+        border: "0",
+        font: "inherit",
+        verticalAlign: "baseline",
+        marginTop: "60",
+        overflow: "hidden",
+    },
+    
+    tool: {
+        WebkitTextSizeAdjust: "100",
+        WebkitFontSmoothing: "antialiased",
+        letterSpacing: ".3",
+        direction: "ltr",
+        fontFeatureSettings: "lnum",
+        color: "#161616",
+        margin: "0",
+        padding: "0",
+        border: "0",
+        font: "inherit",
+        verticalAlign: "baseline",
+        height: "calc(100vh - 60)",
+        boxSizing: "borderBox",
+        position: "relative",
+        display: "flex",
+        alignIts: "center",
+        overflow: "auto",
+        overflowX: "hidden",
+    },
+    
+    tool__workarea: {
+        WebkitTextSizeAdjust: "100",
+        WebkitFontSmoothing: "antialiased",
+        letterSpacing: ".3",
+        direction: "ltr",
+        fontFeatureSettings: "lnum",
+        color: "#161616",
+        margin: "0",
+        border: "0",
+        font: "inherit",
+        verticalAlign: "baseline",
+        textAlign: "center",
+        height: "100",
+        padding: "24",
+        boxSizing: "borderBox",
+        flex: "1 1 0",
+        backgroundColor: "#f3f0ec",
+        overflowY: "auto",
+        overflowX: "hidden",
+        position: "relative",
+    },
+    
+    droparea: {
+        WebkitTextSizeAdjust: "100",
+        WebkitFontSmoothing: "antialiased",
+        letterSpacing: ".3",
+        direction: "ltr",
+        fontFeatureSettings: "lnum ",
+        color: "#161616",
+        textAlign: "center",
+        boxSizing: "inherit",
+        margin: "0",
+        border: "0",
+        font: "inherit",
+        verticalAlign: "baseline",
+        padding: "6 24 30",
+    },
+    
+    tool__header: {
+        WebkitTextSizeAdjust: "100",
+        WebkitFontSmoothing: "antialiased",
+        letterSpacing: ".3",
+        direction: "ltr",
+        fontFeatureSettings: "lnum ",
+        color: "#161616",
+        textAlign: "center",
+        boxSizing: "inherit",
+        margin: "0",
+        border: "0",
+        font: "inherit",
+        verticalAlign: "baseline",
+        padding: "6 24 30",
+    
+    },
+    
+    tool__header__title: {
+        WebkitTextSizeAdjust: "100",
+        WebkitFontSmoothing: "antialiased",
+        direction: "ltr",
+        fontFeatureSettings: "lnum",
+        boxSizing: "inherit",
+        padding: "0",
+        border: "0",
+        font: "inherit",
+        verticalAlign: "baseline",
+        marginTop: "0",
+        fontSize: "42",
+        letterSpacing: "0",
+        fontWeight: "600",
+        color: "#383e45",
+        marginBottom: "8",
+        lineHeight: "46",
+        maxWidth: "800",
+        marginLeft: "auto",
+        marginRight: "auto",
+        textAlign: "center",
+    },
+    
+    tool__header__subtitle: {
+        WebkitTextSizeAdjust: "100",
+        WebkitFontSmoothing: "antialiased",
+        direction: "ltr",
+        fontFeatureSettings: "lnum",
+        textAlign: "center",
+        boxSizing: "inherit",
+        padding: "0",
+        border: "0",
+        font: "inherit",
+        verticalAlign: "baseline",
+        maxWidth: "800",
+        fontSize: "22",
+        fontWeight: "400",
+        color: "#383e45",
+        letterSpacing: "0",
+        margin: "0 auto 8",
+        lineHeight: "32",
+    },
+    
+    uploading__bar: {
+        WebkitTextSizeAdjust: "100",
+        WebkitFontSmoothing: "antialiased",
+        letterSpacing: ".3",
+        direction: "ltr",
+        fontFeatureSettings: "lnum",
+        color: "#161616",
+        textAlign: "center",
+        boxSizing: "inherit",
+        padding: "0",
+        font: "inherit",
+        verticalAlign: "baseline",
+        borderRadius: "2",
+        overflow: "hidden",
+        backgroundColor: "#fff",
+        width: "100",
+        height: "2",
+        border: "0",
+        position: "absolute",
+        top: "0",
+        left: "0",
+        margin: "0",
+        display: "none",
+    },
+    
+    uploading__bar__completed: {
+        WebkitTextSizeAdjust: "100",
+        WebkitFontSmoothing: "antialiased",
+        letterSpacing: ".3",
+        direction: "ltr",
+        fontFeatureSettings: "lnum",
+        color: "#161616",
+        textAlign: "center",
+        boxSizing: "inherit",
+        margin: "0",
+        padding: "0",
+        border: "0",
+        font: "inherit",
+        verticalAlign: "baseline",
+        background: "#e5322d",
+        transition: "all .6s linear",
+        display: "block",
+        height: "100",
+        width: "0",
+        borderRadius: "2",
+    },
+    
+    uploader: {
+        WebkitTextSizeAdjust: "100",
+        WebkitFontSmoothing: "antialiased",
+        letterSpacing: ".3",
+        direction: "ltr",
+        fontFeatureSettings: "lnum",
+        color: "#161616",
+        boxSizing: "inherit",
+        margin: "0",
+        padding: "0",
+        border: "0",
+        font: "inherit",
+        verticalAlign: "baseline",
+        flexWrap: "wrap",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginBottom: "22",
+        textAlign: "center",
+        position: "relative",
+        display: "table",
+    },
+    
+    dropFilesZone: {
+        padding: "2",
+        border: "2 dashed black",
+        color: "black",
+        width: "100",
+        display: "flex",
+        flexWrap: "wrap",
+        boxSizing: "borderBox",
+        textAlign: "center",
+        backgroundColor: "#fff",
+    },
+    
+    dropFilesZoneDiv: {
+        width: "100",
+    },
+    
+    dropFilesWarningGridZone: {
+        width: "70",
+        textAlign: "center",
+        color: "red",
+        fontWeight: "bold",
+    },
+    
+    gridContainer: {
+        paddingTop: "10",
+    },
+    
+    mergeButton: {
+        margin: "10",
+        width: "166",
+    }
+}))
+
+export default function Mergepdf() {
+
+    
+    const classes = useStyles();
+   //// constructor() {
+	//	super();
 	this.state = {
 		files: [],
 		hasFiles: false,
@@ -17,10 +259,10 @@ class Mergepdf extends Component {
 		},
 		testValue: true
 	}
-}
+//}
 
 
-onFilesChange = (files) => {
+function onFilesChange(files) {
     console.log("files", files);
     this.setState({
         files,
@@ -30,20 +272,19 @@ onFilesChange = (files) => {
     })
 }
 
-onFilesError = (error, file) => {
+function onFilesError (error, file) {
     console.log('[LOG] Error code ' + error.code + ': ' + error.message)
 }
 
-    render() {
     return (
         <div className="files">
-            <Grid container spacing={10} justify="center" className='gridContainer'>
-					<Grid item className='dropFilesGridZone'>
+            <Grid container spacing={10} justify="center" className={classes.gridContainer}>
+					<Grid item className={classes.dropFilesGridZone}>
 						<Files
 							ref='files'
-							className='dropFilesZone'
-							onChange={this.onFilesChange}
-							onError={this.onFilesError}
+							className={this.classes.dropFilesZone}
+							onChange={onFilesChange}
+							onError={onFilesError}
 							accepts={['.pdf']}
 							multiple
 							maxFiles={1000}
@@ -51,7 +292,7 @@ onFilesError = (error, file) => {
 							minFileSize={0}
 							clickable
 						>
-							<div className='dropFilesZoneDiv'>Drop files here or click to upload</div>
+							<div className={classes.dropFilesZoneDiv}>Drop files here or click to upload</div>
 						</Files>
 					</Grid>
 				</Grid>
@@ -61,7 +302,7 @@ onFilesError = (error, file) => {
 
 
             {/* <div className="header"></div> */}
-            {/* <div className="main">
+            {/* <div className={classes.main}>
                 <div class="tool tool--small">
                     <div class="tool__workarea" id="workArea">
                         <div id="dropArea"></div>
@@ -167,7 +408,5 @@ onFilesError = (error, file) => {
             </div> */}
         </div>
     )
-        }
+        
 }
-
-export default Mergepdf;
